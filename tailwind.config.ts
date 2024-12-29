@@ -12,6 +12,9 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        name: ['Oleo Script Swash Caps', 'cursive']
+      }
     },
   },
   plugins: [],
