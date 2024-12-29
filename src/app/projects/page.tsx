@@ -2,6 +2,7 @@ import React from "react";
 import ProjectCard from "./ProjectCard";
 import accumitt from "@/assets/image.png";
 import { StaticImageData } from "next/image";
+import Particles from "@/components/ui/particles";
 
 // Type definition for the project items
 interface Project {
@@ -40,7 +41,14 @@ const projects: Project[] = [
 
 const Projects: React.FC = () => {
   return (
-    <div className="flex flex-col justify-center items-center gap-5">
+    <div className="relative flex flex-col justify-center items-center gap-5 ">
+      <Particles
+        className="absolute inset-0 z-0 inset-y-[-20%]"
+        quantity={150}
+        ease={80}
+        color="#000"
+        refresh
+      />
       {/* Heading Section */}
       <div className="text-center mb-10">
         <h1 className="font-semibold text-4xl">Explore My Projects</h1>
