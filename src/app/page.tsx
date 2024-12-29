@@ -2,6 +2,7 @@ import React from "react";
 import imageUrl from "../assets/image.png"; // Importing image
 import Counter from "../components/Counter.component";
 import Image from "next/image"; // Import Image from next/image
+import Meteors from "@/components/ui/meteors";
 
 interface DataItem {
   heading: React.ReactNode;
@@ -49,7 +50,8 @@ const data: DataItem[] = [
 
 const AboutMe: React.FC = () => {
   return (
-    <div className="flex flex-col justify-center items-center gap-5">
+    <div className="relative flex flex-col justify-center items-center gap-5 overflow-hidden">
+      <Meteors number={40} />
       {/* heading */}
       <div className="text-center mb-10">
         <h1 className="font-semibold text-4xl">About Srishti Gautam</h1>
@@ -80,8 +82,8 @@ const AboutMe: React.FC = () => {
           <div className="flex flex-wrap justify-evenly">
             {data.map((item, index) => (
               <div key={index} className="mb-10 max-w-xs text-justify">
-                <h1 className="font-semibold text-xl">{item.heading}</h1>
-                <p className="max-w-2xl mt-5 text-sm">{item.description}</p>
+                <h1 className="font-semibold text-xl py-4 ">{item.heading}</h1>
+                <p className="max-w-2xl text-sm">{item.description}</p>
               </div>
             ))}
           </div>
