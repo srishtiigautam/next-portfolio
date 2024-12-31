@@ -12,6 +12,10 @@ const Header: React.FC = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <header className="flex justify-between items-center p-6 relative">
       <div>
@@ -82,10 +86,10 @@ const Header: React.FC = () => {
       {isMenuOpen && (
         <div className="absolute top-full right-0 bg-white shadow-md rounded-lg p-4 z-50 flex flex-col items-center gap-2 custom-lg:hidden">
           <nav className="flex flex-col w-full">
-            <NavItem to="/" label="About Me" className="block px-4 py-2" />
-            <NavItem to="/projects" label="Projects" className="block px-4 py-2" />
-            <NavItem to="/uiuxdesign" label="UI/UX Design" className="block px-4 py-2" />
-            <NavItem to="/testimonials" label="Testimonials" className="block px-4 py-2" />
+            <NavItem to="/" label="About Me" className="block px-4 py-2" onClick={closeMenu} />
+            <NavItem to="/projects" label="Projects" className="block px-4 py-2" onClick={closeMenu} />
+            <NavItem to="/uiuxdesign" label="UI/UX Design" className="block px-4 py-2" onClick={closeMenu} />
+            <NavItem to="/testimonials" label="Testimonials" className="block px-4 py-2" onClick={closeMenu} />
           </nav>
           <Button label="View Projects" />
         </div>
