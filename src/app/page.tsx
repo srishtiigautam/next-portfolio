@@ -64,6 +64,18 @@ const AboutMe: React.FC = () => {
 
       {/* body */}
       <div className="flex justify-around flex-wrap gap-8 md:px-16">
+      
+      {/* image at top for small screens and at side or bottom for bigger screens */}
+      <div className="flex custom-lg:hidden justify-end items-center">
+          <Image
+            className="object-cover object-center rounded-md"
+            src={imageUrl} // Use the imported image here
+            alt="dp"
+            width={500} // Set width
+            height={500} // Set height
+          />
+        </div>
+
         {/* left div -> contains sub sections */}
         <div className="md:max-w-3xl">
           {/* main center div */}
@@ -90,7 +102,7 @@ const AboutMe: React.FC = () => {
         </div>
 
         {/* right div -> contains image */}
-        <div className="flex justify-end items-center">
+        <div className="hidden custom-lg:flex justify-end items-center">
           <Image
             className="object-cover object-center rounded-md"
             src={imageUrl} // Use the imported image here
