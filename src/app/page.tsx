@@ -68,11 +68,11 @@ const AboutMe: React.FC = () => {
         <div className="md:max-w-3xl">
           {/* main center div */}
           <div className="text-center mb-10 ">
-            <h1 className="font-semibold text-4xl">Srishti Gautam's Journey</h1>
+            <h1 className="font-semibold text-4xl">Srishti Gautam&apos;s Journey</h1>
             <p className="mt-5">
               Srishti Gautam is a dedicated Software Engineering student with a
               strong foundation in Full Stack Development and UI/UX Design. Her
-              journey began with a passion for technology, leading her to
+              journey began with a passion for technology&lsqo;leading her to
               explore various projects that merge functionality with user
               experience.
             </p>
