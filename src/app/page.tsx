@@ -51,11 +51,11 @@ const data: DataItem[] = [
 const AboutMe: React.FC = () => {
   return (
     <div className="relative flex flex-col justify-center items-center gap-5 overflow-hidden">
-      <Meteors number={40} />
+      <Meteors number={20} />
       {/* heading */}
       <div className="text-center mb-10">
         <h1 className="font-semibold text-4xl">About Srishti Gautam</h1>
-        <p className="max-w-2xl mt-5">
+        <p className="md:max-w-2xl mt-5">
           Discover the journey of a dedicated Full Stack Developer and UI/UX
           Designer. <br /> Srishti Gautam excels in creating seamless digital
           experiences that captivate users.
@@ -63,9 +63,9 @@ const AboutMe: React.FC = () => {
       </div>
 
       {/* body */}
-      <div className="flex justify-around gap-8 px-16">
+      <div className="flex justify-around flex-wrap gap-8 md:px-16">
         {/* left div -> contains sub sections */}
-        <div className="max-w-3xl">
+        <div className="md:max-w-3xl">
           {/* main center div */}
           <div className="text-center mb-10 ">
             <h1 className="font-semibold text-4xl">Srishti Gautam's Journey</h1>
@@ -83,7 +83,7 @@ const AboutMe: React.FC = () => {
             {data.map((item, index) => (
               <div key={index} className="mb-10 max-w-xs text-justify">
                 <h1 className="font-semibold text-xl py-4 ">{item.heading}</h1>
-                <p className="max-w-2xl text-sm">{item.description}</p>
+                <p className="md:max-w-2xl text-sm">{item.description}</p>
               </div>
             ))}
           </div>
