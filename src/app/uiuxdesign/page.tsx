@@ -1,16 +1,7 @@
 import React from "react";
 import UiUxHero from "./UiUxHero";
-import { StaticImageData } from "next/image";
-import accumitt from "@/assets/image.png";
 import { UiUxDesignCard } from "./UiUxDesignCard";
 import RetroGrid from "@/components/ui/retro-grid";
-
-// Type definition for the project items
-interface Project {
-  name: string;
-  imageUrl: string | StaticImageData; // Can be a string (URL) or StaticImageData from Next.js
-  description: string;
-}
 
 const UiUxDesign: React.FC = () => {
   return (
