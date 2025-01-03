@@ -12,40 +12,6 @@ interface Project {
   description: string;
 }
 
-// Sample projects array with type
-const projects: Project[] = [
-  {
-    name: "Accumitt",
-    imageUrl: accumitt,
-    description:
-      "Accumitt is an AI-powered accupressure glove that targets specific points based on symptoms.",
-  },
-  {
-    name: "Sahayak",
-    imageUrl: accumitt,
-    description:
-      "Sahayak is a public grievances redressal portal for villagers that connects people directly to local authorities.",
-  },
-  {
-    name: "Google Meet Summarizer",
-    imageUrl: accumitt,
-    description:
-      "This is an AI-powered meeting summarizer Chrome extension that summarizes your meetings into note format.",
-  },
-  {
-    name: "RestoreHealth",
-    imageUrl: accumitt,
-    description:
-      "A desktop application for comprehensive patient data management, including patient history and more.",
-  },
-  {
-    name: "RestoreHealth",
-    imageUrl: accumitt,
-    description:
-      "A desktop application for comprehensive patient data management, including patient history and more.",
-  },
-];
-
 const UiUxDesign: React.FC = () => {
   return (
     <div className="flex flex-col justify-center items-center gap-5">
