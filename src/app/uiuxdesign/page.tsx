@@ -1,41 +1,9 @@
-import React, { JSX } from "react";
+import React from "react";
 import UiUxHero from "./UiUxHero";
-import { FaLightbulb, FaSearch } from "react-icons/fa";
-import { MdGroups } from "react-icons/md";
 import { StaticImageData } from "next/image";
 import accumitt from "@/assets/image.png";
-import ProjectCard from "../projects/ProjectCard";
 import { UiUxDesignCard } from "./UiUxDesignCard";
 import RetroGrid from "@/components/ui/retro-grid";
-
-// Define the type for items in the data array
-// interface DesignBenefit {
-//   icon: JSX.Element;
-//   heading: string;
-//   description: string;
-// }
-
-// Define the data with the correct type
-// const data: DesignBenefit[] = [
-//   {
-//     icon: <FaLightbulb size={30} />,
-//     heading: "Intuitive Designs",
-//     description:
-//       "Throughout her career, Srishti has successfully completed over 40 projects, showcasing her ability to create scalable web applications that meet diverse user needs.",
-//   },
-//   {
-//     icon: <FaSearch size={30} />,
-//     heading: "Research & Testing",
-//     description:
-//       "Her innovative approach has earned her 15 awards in design and development, reflecting her commitment to excellence and creativity.",
-//   },
-//   {
-//     icon: <MdGroups size={30} />,
-//     heading: "Client Collaboration",
-//     description:
-//       "Srishti has dedicated over 300 hours to volunteer work, helping others learn about technology and coding, which aligns with her values of collaboration and continuous learning.",
-//   },
-// ];
 
 // Type definition for the project items
 interface Project {
