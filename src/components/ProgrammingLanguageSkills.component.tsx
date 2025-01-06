@@ -7,7 +7,6 @@ import { PieSectorDataItem } from "recharts/types/polar/Pie"
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
@@ -27,11 +26,9 @@ import {
 } from "@/components/ui/select"
 
 const desktopData = [
-  { language: "javascript", desktop: 85, fill: "var(--color-javascript)" },
-  { language: "python", desktop: 80, fill: "var(--color-python)" },
-  { language: "java", desktop: 90, fill: "var(--color-java)" },
-  // { language: "april", desktop: 173, fill: "var(--color-april)" },
-  // { language: "may", desktop: 209, fill: "var(--color-may)" },
+  { language: "javascript", desktop: 85, fill: "var(--color-pink)" },
+  { language: "python", desktop: 80, fill: "var(--color-blue)" },
+  { language: "java", desktop: 90, fill: "var(--color-purple)" },
 ]
 
 const chartConfig = {
@@ -56,14 +53,6 @@ const chartConfig = {
     label: "Java",
     color: "#cc65fe",
   },
-  // april: {
-  //   label: "April",
-  //   color: "hsl(var(--chart-4))",
-  // },
-  // may: {
-  //   label: "May",
-  //   color: "hsl(var(--chart-5))",
-  // },
 } satisfies ChartConfig
 
 export default function ProgrammingLanguageSkills() {
@@ -80,7 +69,7 @@ export default function ProgrammingLanguageSkills() {
     <Card data-chart={id} className="flex flex-col">
       <ChartStyle id={id} config={chartConfig} />
       <CardHeader className="flex-row items-start space-y-0 pb-0">
-        <div className="grid gap-1">
+        <div className="grid gap-1 mr-3">
           <CardTitle>Programming Languages</CardTitle>
           {/* <CardDescription>January - June 2024</CardDescription> */}
         </div>
