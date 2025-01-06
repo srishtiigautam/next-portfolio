@@ -13,9 +13,6 @@ export default {
         "custom-lg": "1080px",
       },
       colors: {
-        "color-javascript": "#ff6384",
-        "color-python": "#36a2eb",
-        "color-java": "#cc65fe",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

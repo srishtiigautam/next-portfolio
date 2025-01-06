@@ -15,9 +15,11 @@ body {
 
 @layer base {
   :root {
-    --color-javascript: #ff6384;
-    --color-python: #36a2eb;
-    --color-java: #cc65fe;
+    --color-pink: #ff6384;
+    --color-blue: #36a2eb;
+    --color-purple: #cc65fe;
+    --color-orange: #e88c30;
+    --color-green: #2eb88a;
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
