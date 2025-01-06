@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Button from "./Button.component";
 import NavItem from "./NavItem.component";
+import SkillsModal from "./SkillsModal.component";
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -73,6 +74,7 @@ const Header: React.FC = () => {
           <NavItem to="/projects" label="Projects" />
           <NavItem to="/uiuxdesign" label="UI/UX Design" />
           <NavItem to="/testimonials" label="Testimonials" />
+          <SkillsModal/>
         </nav>
         <Button label="Resume" redirectUrl="https://drive.google.com/file/d/1tlx7EqH8RLow241rQC1-Tsla9Uwl8CjA/view?usp=sharing"/>
       </div>
