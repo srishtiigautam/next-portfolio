@@ -2,7 +2,6 @@ import React from "react";
 import imageUrl from "../assets/image.png"; // Importing image
 import Counter from "../components/Counter.component";
 import Image from "next/image"; // Import Image from next/image
-import Meteors from "@/components/ui/meteors";
 
 interface DataItem {
   heading: React.ReactNode;
@@ -51,7 +50,6 @@ const data: DataItem[] = [
 const AboutMe: React.FC = () => {
   return (
     <div className="relative flex flex-col justify-center items-center gap-5 overflow-hidden">
-      <Meteors number={20} />
       {/* heading */}
       <div className="text-center mb-10">
         <h1 className="font-semibold text-4xl">About Srishti Gautam</h1>
