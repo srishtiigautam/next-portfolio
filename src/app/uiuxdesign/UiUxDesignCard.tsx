@@ -1,75 +1,48 @@
-import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
-import Image from "next/image";
+import ProjectCard from "@/components/ProjectCard";
 
-const features = [
+const designs = [
   {
     name: "Accumitt",
-    description: "We automatically save your files as you type.",
-    href: "https://www.figma.com/design/fGYgGacZFTItWI8VX0PyBf/Untitled?t=6emmmBwEY3oaD0i6-0",
+    description:
+      "Accumitt is an AI-powered accupressure glove that targets specific points based on symptoms.",
+    redirectUrl:
+      "https://www.figma.com/design/fGYgGacZFTItWI8VX0PyBf/Untitled?t=6emmmBwEY3oaD0i6-0",
     cta: "Learn more",
-    background: (
-      <Image
-        src="/accumitt.png"
-        alt="avatar"
-        fill={true}
-        className="object-center object-contain opacity-50"
-      />
-    ),
-    className: "lg:row-start-1 lg:row-end-4 lg:col-start-1 lg:col-end-2",
+    imageUrl: "/accumitt.jpeg",
   },
   {
     name: "Restore Health",
-    description: "Search through all your files in one place.",
-    href: "https://www.figma.com/design/USgPAameY3uPyQhce7jU8d/Untitled?t=6emmmBwEY3oaD0i6-0",
+    description:
+      "A desktop application for comprehensive patient data management, including patient history and more.",
+    redirectUrl:
+      "https://www.figma.com/design/USgPAameY3uPyQhce7jU8d/Untitled?t=6emmmBwEY3oaD0i6-0",
     cta: "Learn more",
-    background: (
-      <Image
-        src="/restoreHealth.png"
-        alt="avatar"
-        fill={true}
-        className="object-center object-contain opacity-50"
-      />
-    ),
-    className: "lg:row-start-2 lg:row-end-4 lg:col-start-2 lg:col-end-4",
+    imageUrl: "/restoreHealth.jpeg",
   },
   {
     name: "Trademarkia Pro",
     description: "Supports 100+ languages and counting.",
-    href: "https://www.figma.com/design/P60X9mhllmVBG2S4RGJT45/trademarkiaPro?t=6emmmBwEY3oaD0i6-0",
+    redirectUrl:
+      "https://www.figma.com/design/P60X9mhllmVBG2S4RGJT45/trademarkiaPro?t=6emmmBwEY3oaD0i6-0",
     cta: "Learn more",
-    background: (
-      <Image
-        src="/trademarkia.png"
-        alt="avatar"
-        fill={true}
-        className="object-center object-contain -z-50 opacity-50"
-      />
-    ),
-    className: "lg:row-start-4 lg:row-end-6 lg:col-start-1 lg:col-end-3",
+    imageUrl: "/trademarkia.jpeg",
   },
   {
     name: "Ticketing Arc",
     description: "Use the calendar to filter your files by date.",
-    href: "https://www.figma.com/design/YNEOxEWflBIz28f74yJuRn/Untitled?node-id=0-1&p=f&t=6emmmBwEY3oaD0i6-0",
+    redirectUrl:
+      "https://www.figma.com/design/YNEOxEWflBIz28f74yJuRn/Untitled?node-id=0-1&p=f&t=6emmmBwEY3oaD0i6-0",
     cta: "Learn more",
-    background: (
-      <Image
-        src="/ticketingArc.png"
-        alt="avatar"
-        fill={true}
-        className="object-center object-contain opacity-50"
-      />
-    ),
-    className: "lg:row-start-4 lg:row-end-7 lg:col-start-3 lg:col-end-4",
+    imageUrl: "/ticketingArc.jpeg",
   },
 ];
 
 export function UiUxDesignCard() {
   return (
-    <BentoGrid className="lg:grid-rows-[repeat(7,_minmax(200px,_1fr))] lg:grid-cols-3">
-      {features.map((feature) => (
-        <BentoCard key={feature.name} {...feature} />
+    <div className="max-w-6xl my-5 flex justify-center flex-wrap gap-5">
+      {designs.map((design) => (
+        <ProjectCard key={design.name} {...design} buttonLabel="View Designs" />
       ))}
-    </BentoGrid>
+    </div>
   );
 }

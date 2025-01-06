@@ -10,7 +10,7 @@ const UiUxDesign: React.FC = () => {
       <UiUxHero />
 
       <div className="relative flex flex-col justify-center items-center gap-5">
-        <RetroGrid angle={20} cellSize={30}/>
+        <RetroGrid angle={30} cellSize={60} />
         {/* Benefits Section */}
         <div className="text-center my-10">
           <h1 className="font-semibold text-4xl">Benefits of UI/UX Design</h1>
