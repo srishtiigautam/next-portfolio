@@ -19,12 +19,8 @@ const Header: React.FC = () => {
   return (
     <header className="flex justify-between items-center p-6 relative">
       <div>
-        <h1 className="font-name">
-          <SparklesText
-            text="Srishti Gautam"
-            sparklesCount={7}
-            className="text-3xl md:text-4xl"
-          />
+        <h1 className="font-name text-3xl md:text-4xl">
+          Srishti Gautam
         </h1>
       </div>
 
