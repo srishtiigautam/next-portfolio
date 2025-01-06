@@ -74,7 +74,7 @@ const Header: React.FC = () => {
           <NavItem to="/uiuxdesign" label="UI/UX Design" />
           <NavItem to="/testimonials" label="Testimonials" />
         </nav>
-        <Button label="View Projects" />
+        <Button label="Resume" redirectUrl="https://drive.google.com/file/d/1tlx7EqH8RLow241rQC1-Tsla9Uwl8CjA/view?usp=sharing"/>
       </div>
 
       {/* Mobile Menu */}
@@ -86,7 +86,7 @@ const Header: React.FC = () => {
             <NavItem to="/uiuxdesign" label="UI/UX Design" className="block px-4 py-2" onClick={closeMenu} />
             <NavItem to="/testimonials" label="Testimonials" className="block px-4 py-2" onClick={closeMenu} />
           </nav>
-          <Button label="View Projects" />
+          <Button label="Resume" redirectUrl="https://drive.google.com/file/d/1tlx7EqH8RLow241rQC1-Tsla9Uwl8CjA/view?usp=sharing"/>
         </div>
       )}
     </header>
