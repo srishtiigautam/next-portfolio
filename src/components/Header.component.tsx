@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import Button from "./Button.component";
 import NavItem from "./NavItem.component";
-import SparklesText from "@/components/ui/sparkles-text";
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
