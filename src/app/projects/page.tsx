@@ -1,41 +1,44 @@
 import React from "react";
-import ProjectCard from "./ProjectCard";
-import accumitt from "@/assets/image.png";
-import { StaticImageData } from "next/image";
+import ProjectCard from "@/components/ProjectCard";
 import Particles from "@/components/ui/particles";
 
 // Type definition for the project items
 interface Project {
   name: string;
-  imageUrl: string | StaticImageData; // Can be a string (URL) or StaticImageData from Next.js
+  imageUrl: string;
   description: string;
+  redirectUrl: string;
 }
 
 // Sample projects array with type
 const projects: Project[] = [
   {
     name: "Accumitt",
-    imageUrl: accumitt,
+    imageUrl: "/accumitt.jpeg",
     description:
       "Accumitt is an AI-powered accupressure glove that targets specific points based on symptoms.",
+    redirectUrl: "https://github.com/srishtiigautam/AccumittApp",
   },
   {
     name: "Sahayak",
-    imageUrl: accumitt,
+    imageUrl: "/sahayak.jpeg",
     description:
       "Sahayak is a public grievances redressal portal for villagers that connects people directly to local authorities.",
+    redirectUrl: "https://github.com/srishtiigautam/sahayak_app",
   },
   {
     name: "Google Meet Summarizer",
-    imageUrl: accumitt,
+    imageUrl: "/googleMeetSummarizer.jpeg",
     description:
       "This is an AI-powered meeting summarizer Chrome extension that summarizes your meetings into note format.",
+    redirectUrl: "https://github.com/UtkarshUttam/HackHive",
   },
   {
     name: "RestoreHealth",
-    imageUrl: accumitt,
+    imageUrl: "/restoreHealth.jpeg",
     description:
       "A desktop application for comprehensive patient data management, including patient history and more.",
+    redirectUrl: "https://github.com/srishtiigautam/restorehealth",
   },
 ];
 
@@ -67,12 +70,7 @@ const Projects: React.FC = () => {
         <div className="max-w-6xl my-5 flex justify-center flex-wrap gap-5">
           {/* Mapping through the projects array */}
           {projects.map((project, index) => (
-            <ProjectCard
-              key={index}
-              name={project.name}
-              imageUrl={project.imageUrl}
-              description={project.description}
-            />
+            <ProjectCard key={index} {...project} />
           ))}
         </div>
       </div>
