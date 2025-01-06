@@ -27,9 +27,9 @@ import {
 } from "@/components/ui/select"
 
 const desktopData = [
-  { language: "javascript", desktop: 186, fill: "#ff6384" },
-  { language: "python", desktop: 305, fill: "#36a2eb" },
-  { language: "java", desktop: 237, fill: "#cc65fe" },
+  { language: "javascript", desktop: 85, fill: "var(--color-javascript)" },
+  { language: "python", desktop: 80, fill: "var(--color-python)" },
+  { language: "java", desktop: 90, fill: "var(--color-java)" },
   // { language: "april", desktop: 173, fill: "var(--color-april)" },
   // { language: "may", desktop: 209, fill: "var(--color-may)" },
 ]
@@ -46,15 +46,15 @@ const chartConfig = {
   },
   javascript: {
     label: "Javascript",
-    color: "hsl(var(--chart-1))",
+    color: "#ff6384",
   },
   python: {
     label: "Python",
-    color: "hsl(var(--chart-2))",
+    color: "#36a2eb",
   },
   java: {
     label: "Java",
-    color: "hsl(var(--chart-3))",
+    color: "#cc65fe",
   },
   // april: {
   //   label: "April",
@@ -81,8 +81,8 @@ export default function ProgrammingLanguageSkills() {
       <ChartStyle id={id} config={chartConfig} />
       <CardHeader className="flex-row items-start space-y-0 pb-0">
         <div className="grid gap-1">
-          <CardTitle>Pie Chart - Interactive</CardTitle>
-          <CardDescription>January - June 2024</CardDescription>
+          <CardTitle>Programming Languages</CardTitle>
+          {/* <CardDescription>January - June 2024</CardDescription> */}
         </div>
         <Select value={activeLanguage} onValueChange={setActiveLanguage}>
           <SelectTrigger
