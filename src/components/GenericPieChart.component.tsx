@@ -11,7 +11,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import {
-  // ChartConfig,
   ChartContainer,
   ChartStyle,
   ChartTooltip,
@@ -58,13 +57,13 @@ const GenericPieChart: React.FC<GenericPieChartProps> = ({ data, config, title }
   return (
     <Card data-chart={id} className="flex flex-col">
       <ChartStyle id={id} config={config} />
-      <CardHeader className="flex-row items-start space-y-0 pb-0">
+      <CardHeader className="flex flex-col sm:flex-row sm:items-center sm:justify-between pb-0">
         <div className="grid gap-1 mr-3">
           <CardTitle>{title}</CardTitle>
         </div>
         <Select value={activeItem} onValueChange={setActiveItem}>
           <SelectTrigger
-            className="ml-auto h-7 w-[130px] rounded-lg pl-2.5"
+            className="mt-2 sm:mt-0 h-7 w-full sm:w-[130px] rounded-lg pl-2.5"
             aria-label="Select a value"
           >
             <SelectValue placeholder="Select item" />
@@ -102,9 +101,9 @@ const GenericPieChart: React.FC<GenericPieChartProps> = ({ data, config, title }
         <ChartContainer
           id={id}
           config={config}
-          className="mx-auto aspect-square w-full max-w-[300px]"
+          className="mx-auto aspect-square w-full max-w-[300px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[600px]"
         >
-          <PieChart>
+          <PieChart width={300} height={300}>
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
@@ -113,7 +112,8 @@ const GenericPieChart: React.FC<GenericPieChartProps> = ({ data, config, title }
               data={data}
               dataKey="value"
               nameKey="key"
-              innerRadius={60}
+              innerRadius="50%"
+              outerRadius="70%"
               strokeWidth={5}
               activeIndex={activeIndex}
               activeShape={({ outerRadius = 0, ...props }: PieSectorDataItem) => (
@@ -140,14 +140,14 @@ const GenericPieChart: React.FC<GenericPieChartProps> = ({ data, config, title }
                         <tspan
                           x={viewBox.cx}
                           y={viewBox.cy}
-                          className="fill-foreground text-3xl font-bold"
+                          className="fill-foreground text-xl sm:text-2xl lg:text-3xl font-bold"
                         >
                           {data[activeIndex]?.value.toLocaleString()}
                         </tspan>
                         <tspan
                           x={viewBox.cx}
                           y={(viewBox.cy || 0) + 24}
-                          className="fill-muted-foreground"
+                          className="fill-muted-foreground text-xs sm:text-sm lg:text-base"
                         >
                           {config[activeItem]?.label || "Value"}
                         </tspan>

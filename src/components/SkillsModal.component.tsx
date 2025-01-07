@@ -77,14 +77,17 @@ export default function SkillsModal() {
       <DialogTrigger asChild>
         <button className="text-black hover:text-pink-400">Skills</button>
       </DialogTrigger>
-      <DialogContent className="sm:min-w-[425px] sm:min-h-[500px] md:min-w-max">
+      <DialogContent className="sm:min-w-[425px] sm:min-h-[500px] md:min-w-max max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Skills</DialogTitle>
           <DialogDescription>
             See my fluency in different skills.
           </DialogDescription>
         </DialogHeader>
-        <div className="flex flex-wrap gap-5">
+        <div
+          className="grid gap-5 mt-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+          style={{ alignItems: "stretch" }}
+        >
           <GenericPieChart
             data={programmingLanguageDesktopData}
             config={programmingLanguageChartConfig}
@@ -105,3 +108,5 @@ export default function SkillsModal() {
     </Dialog>
   );
 }
+
+
