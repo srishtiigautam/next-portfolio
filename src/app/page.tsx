@@ -49,7 +49,7 @@ const data: DataItem[] = [
 
 const AboutMe: React.FC = () => {
   return (
-    <div className="relative flex flex-col justify-center items-center gap-5 overflow-hidden">
+    <div className="relative flex flex-col justify-center items-center gap-5">
       {/* heading */}
       <div className="text-center mb-10">
         <h1 className="font-semibold text-4xl">About Srishti Gautam</h1>
