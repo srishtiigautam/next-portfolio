@@ -82,11 +82,12 @@ const Header: React.FC = () => {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="absolute top-full right-0 bg-white shadow-md rounded-lg p-4 z-50 flex flex-col items-center gap-2 custom-lg:hidden">
-          <nav className="flex flex-col w-full">
+          <nav className="flex flex-col items-start w-full">
             <NavItem to="/" label="About Me" className="block px-4 py-2" onClick={closeMenu} />
             <NavItem to="/projects" label="Projects" className="block px-4 py-2" onClick={closeMenu} />
             <NavItem to="/uiuxdesign" label="UI/UX Design" className="block px-4 py-2" onClick={closeMenu} />
             <NavItem to="/testimonials" label="Testimonials" className="block px-4 py-2" onClick={closeMenu} />
+            <div className="block px-4 py-2"><SkillsModal/></div>
           </nav>
           <Button label="Resume" redirectUrl="https://drive.google.com/file/d/1tlx7EqH8RLow241rQC1-Tsla9Uwl8CjA/view?usp=sharing"/>
         </div>
