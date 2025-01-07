@@ -1,91 +1,80 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Label, Pie, PieChart, Sector } from "recharts"
-import { PieSectorDataItem } from "recharts/types/polar/Pie"
+import * as React from "react";
+import { Label, Pie, PieChart, Sector } from "recharts";
+import { PieSectorDataItem } from "recharts/types/polar/Pie";
 
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 import {
-  ChartConfig,
+  // ChartConfig,
   ChartContainer,
   ChartStyle,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart"
+} from "@/components/ui/chart";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "@/components/ui/select";
 
-const desktopData = [
-  { language: "javascript", desktop: 85, fill: "var(--color-pink)" },
-  { language: "python", desktop: 80, fill: "var(--color-blue)" },
-  { language: "java", desktop: 90, fill: "var(--color-purple)" },
-]
+// Define the types for the data and configuration
+export type PieChartDataItem = {
+  key: string; // Unique identifier for the data item
+  value: number; // Numeric value for the data item
+  fill?: string; // Optional color for the slice
+};
 
-const chartConfig = {
-  visitors: {
-    label: "Visitors",
-  },
-  desktop: {
-    label: "Desktop",
-  },
-  mobile: {
-    label: "Mobile",
-  },
-  javascript: {
-    label: "Javascript",
-    color: "#ff6384",
-  },
-  python: {
-    label: "Python",
-    color: "#36a2eb",
-  },
-  java: {
-    label: "Java",
-    color: "#cc65fe",
-  },
-} satisfies ChartConfig
+export type PieChartConfig = {
+  [key: string]: {
+    label: string; // Label to display for the item
+    color: string; // Color to use for the item
+  };
+};
 
-export default function ProgrammingLanguageSkills() {
-  const id = "pie-interactive"
-  const [activeLanguage, setActiveLanguage] = React.useState(desktopData[0].language)
+interface GenericPieChartProps {
+  data: PieChartDataItem[]; // Data for the chart
+  config: PieChartConfig; // Configuration for the chart
+  title: string; // Title of the chart
+}
+
+const GenericPieChart: React.FC<GenericPieChartProps> = ({ data, config, title }) => {
+  const id = "pie-interactive";
+  const [activeItem, setActiveItem] = React.useState(data[0]?.key);
 
   const activeIndex = React.useMemo(
-    () => desktopData.findIndex((item) => item.language === activeLanguage),
-    [activeLanguage]
-  )
-  const languages = React.useMemo(() => desktopData.map((item) => item.language), [])
+    () => data.findIndex((item) => item.key === activeItem),
+    [activeItem, data]
+  );
+  const keys = React.useMemo(() => data.map((item) => item.key), [data]);
 
   return (
     <Card data-chart={id} className="flex flex-col">
-      <ChartStyle id={id} config={chartConfig} />
+      <ChartStyle id={id} config={config} />
       <CardHeader className="flex-row items-start space-y-0 pb-0">
         <div className="grid gap-1 mr-3">
-          <CardTitle>Programming Languages</CardTitle>
-          {/* <CardDescription>January - June 2024</CardDescription> */}
+          <CardTitle>{title}</CardTitle>
         </div>
-        <Select value={activeLanguage} onValueChange={setActiveLanguage}>
+        <Select value={activeItem} onValueChange={setActiveItem}>
           <SelectTrigger
             className="ml-auto h-7 w-[130px] rounded-lg pl-2.5"
             aria-label="Select a value"
           >
-            <SelectValue placeholder="Select month" />
+            <SelectValue placeholder="Select item" />
           </SelectTrigger>
           <SelectContent align="end" className="rounded-xl">
-            {languages.map((key) => {
-              const config = chartConfig[key as keyof typeof chartConfig]
+            {keys.map((key) => {
+              const itemConfig = config[key];
 
-              if (!config) {
-                return null
+              if (!itemConfig) {
+                return null;
               }
 
               return (
@@ -98,13 +87,13 @@ export default function ProgrammingLanguageSkills() {
                     <span
                       className="flex h-3 w-3 shrink-0 rounded-sm"
                       style={{
-                        backgroundColor: `var(--color-${key})`,
+                        backgroundColor: itemConfig.color,
                       }}
                     />
-                    {config?.label}
+                    {itemConfig?.label}
                   </div>
                 </SelectItem>
-              )
+              );
             })}
           </SelectContent>
         </Select>
@@ -112,7 +101,7 @@ export default function ProgrammingLanguageSkills() {
       <CardContent className="flex flex-1 justify-center pb-0">
         <ChartContainer
           id={id}
-          config={chartConfig}
+          config={config}
           className="mx-auto aspect-square w-full max-w-[300px]"
         >
           <PieChart>
@@ -121,16 +110,13 @@ export default function ProgrammingLanguageSkills() {
               content={<ChartTooltipContent hideLabel />}
             />
             <Pie
-              data={desktopData}
-              dataKey="desktop"
-              nameKey="language"
+              data={data}
+              dataKey="value"
+              nameKey="key"
               innerRadius={60}
               strokeWidth={5}
               activeIndex={activeIndex}
-              activeShape={({
-                outerRadius = 0,
-                ...props
-              }: PieSectorDataItem) => (
+              activeShape={({ outerRadius = 0, ...props }: PieSectorDataItem) => (
                 <g>
                   <Sector {...props} outerRadius={outerRadius + 10} />
                   <Sector
@@ -156,17 +142,17 @@ export default function ProgrammingLanguageSkills() {
                           y={viewBox.cy}
                           className="fill-foreground text-3xl font-bold"
                         >
-                          {desktopData[activeIndex].desktop.toLocaleString()}
+                          {data[activeIndex]?.value.toLocaleString()}
                         </tspan>
                         <tspan
                           x={viewBox.cx}
                           y={(viewBox.cy || 0) + 24}
                           className="fill-muted-foreground"
                         >
-                          Visitors
+                          {config[activeItem]?.label || "Value"}
                         </tspan>
                       </text>
-                    )
+                    );
                   }
                 }}
               />
@@ -175,5 +161,7 @@ export default function ProgrammingLanguageSkills() {
         </ChartContainer>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
+
+export default GenericPieChart;

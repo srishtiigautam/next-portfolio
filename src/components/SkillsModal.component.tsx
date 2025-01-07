@@ -6,9 +6,70 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import ProgrammingLanguageSkills from "./ProgrammingLanguageSkills.component";
-import WebDevSkills from "./WebDevSkills.component";
-import DesignSkills from "./DesignSkills.component";
+
+import GenericPieChart from "./GenericPieChart.component";
+import { PieChartDataItem, PieChartConfig } from "./GenericPieChart.component";
+
+const programmingLanguageDesktopData: PieChartDataItem[] = [
+  { key: "javascript", value: 85, fill: "var(--color-pink)" },
+  { key: "python", value: 80, fill: "var(--color-blue)" },
+  { key: "java", value: 90, fill: "var(--color-purple)" },
+];
+const programmingLanguageChartConfig: PieChartConfig = {
+  javascript: { label: "Javascript", color: "#ff6384" },
+  python: { label: "Python", color: "#36a2eb" },
+  java: { label: "Java", color: "#cc65fe" },
+};
+
+const webDevDesktopData: PieChartDataItem[] = [
+  { key: "html", value: 85, fill: "var(--color-pink)" },
+  { key: "css", value: 80, fill: "var(--color-blue)" },
+  { key: "reactjs", value: 90, fill: "var(--color-purple)" },
+  { key: "nextjs", value: 173, fill: "var(--color-orange)" },
+  { key: "nodejs", value: 209, fill: "var(--color-green)" },
+];
+const webDevChartConfig: PieChartConfig = {
+  html: {
+    label: "HTML",
+    color: "#ff6384",
+  },
+  css: {
+    label: "CSS",
+    color: "#36a2eb",
+  },
+  reactjs: {
+    label: "React.js",
+    color: "#cc65fe",
+  },
+  nextjs: {
+    label: "Next.js",
+    color: "#e88c30",
+  },
+  nodejs: {
+    label: "Node.js",
+    color: "#2eb88a",
+  },
+};
+
+const designDesktopData: PieChartDataItem[] = [
+  { key: "adobexd", value: 85, fill: "var(--color-pink)" },
+  { key: "figma", value: 80, fill: "var(--color-blue)" },
+  { key: "qtdesigner", value: 90, fill: "var(--color-purple)" },
+];
+const designChartConfig: PieChartConfig = {
+  adobexd: {
+    label: "Adobe XD",
+    color: "#ff6384",
+  },
+  figma: {
+    label: "Figma",
+    color: "#36a2eb",
+  },
+  qtdesigner: {
+    label: "QT Designer",
+    color: "#cc65fe",
+  },
+};
 
 export default function SkillsModal() {
   return (
@@ -24,9 +85,21 @@ export default function SkillsModal() {
           </DialogDescription>
         </DialogHeader>
         <div className="flex flex-wrap gap-5">
-          <ProgrammingLanguageSkills />
-          <WebDevSkills/>
-          <DesignSkills />
+          <GenericPieChart
+            data={programmingLanguageDesktopData}
+            config={programmingLanguageChartConfig}
+            title="Programming Languages"
+          />
+          <GenericPieChart
+            data={webDevDesktopData}
+            config={webDevChartConfig}
+            title="Web Development"
+          />
+          <GenericPieChart
+            data={designDesktopData}
+            config={designChartConfig}
+            title="UI/UX Designing Skills"
+          />
         </div>
       </DialogContent>
     </Dialog>
