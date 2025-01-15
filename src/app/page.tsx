@@ -26,7 +26,6 @@ const AboutMe: React.FC = () => {
         if (response.ok) {
           const data: AboutData = await response.json();
           setAboutData(data);
-          console.log(data);
         } else {
           console.error("Failed to fetch about data");
         }

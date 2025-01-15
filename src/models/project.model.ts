@@ -5,7 +5,7 @@ export interface IProject extends Document {
   projectLink: string;
   projectName: string;
   description: string;
-  isUiUx: boolean;
+  // isUiUx: boolean;
 }
 
 const ProjectSchema: Schema<IProject> = new mongoose.Schema({
@@ -13,7 +13,7 @@ const ProjectSchema: Schema<IProject> = new mongoose.Schema({
   projectLink: { type: String, required: true },
   projectName: { type: String, required: true },
   description: { type: String, required: true },
-  isUiUx: { type: Boolean, default: false },
+  // isUiUx: { type: Boolean, default: false },
 });
 
 const Project: Model<IProject> =
