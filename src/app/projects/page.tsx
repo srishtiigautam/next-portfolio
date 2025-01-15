@@ -22,7 +22,6 @@ const Projects: React.FC = () => {
         if (response.ok) {
           const data: Project[] = await response.json();
           setProjectData(data);
-          console.log(data);
         } else {
           console.error("Failed to fetch project data");
         }
