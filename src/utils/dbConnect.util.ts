@@ -11,25 +11,23 @@ interface Cached {
   promise: Promise<mongoose.Connection> | null;
 }
 
-declare global {
-  var mongoose: Cached;
-}
-
-let cached: Cached = global.mongoose || { conn: null, promise: null };
-
-if (!global.mongoose) {
-  global.mongoose = cached;
-}
+// Use a module-level cache instead of global
+const cached: Cached = {
+  conn: null,
+  promise: null,
+};
 
 const dbConnect = async (): Promise<mongoose.Connection> => {
+  // Check if the connection is already established
   if (cached.conn) {
     return cached.conn;
   }
 
+  // If there's no connection, start a new one
   if (!cached.promise) {
     cached.promise = mongoose
       .connect(MONGO_URI as string)
-      .then((mongoose) => mongoose.connection);
+      .then((mongooseInstance) => mongooseInstance.connection);
   }
 
   cached.conn = await cached.promise;
