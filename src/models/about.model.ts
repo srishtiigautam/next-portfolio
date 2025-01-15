@@ -3,6 +3,7 @@ import mongoose, { Schema, Document, Model } from "mongoose";
 export interface IAbout extends Document {
   photo: string;
   description: string;
+  bio: string;
   projectsCount: number;
   hoursWorked: number;
   clientsHandled: number;
@@ -12,6 +13,7 @@ export interface IAbout extends Document {
 const AboutSchema: Schema<IAbout> = new mongoose.Schema({
   photo: { type: String, required: true },
   description: { type: String, required: true },
+  bio: { type: String, required: true },
   projectsCount: { type: Number, required: true },
   hoursWorked: { type: Number, required: true },
   clientsHandled: { type: Number, required: true },
