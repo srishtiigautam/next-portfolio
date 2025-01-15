@@ -48,7 +48,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           </div>
 
           {/* Back Face */}
-          <div className="absolute inset-0 h-full w-full rounded-xl bg-black/80 px-8 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+          <div className="absolute inset-0 h-full w-full rounded-xl bg-black/80 px-4 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
             <div className="flex min-h-full flex-col items-center justify-center">
               <h2 className="text-2xl font-semibold mb-2">{name}</h2>
               <p className="text-md text-pretty text-center mb-2">

@@ -1,47 +1,47 @@
-import ProjectCard from "@/components/ProjectCard";
+"use client";
 
-const designs = [
-  {
-    name: "Accumitt",
-    description:
-      "Accumitt is an AI-powered accupressure glove that targets specific points based on symptoms.",
-    redirectUrl:
-      "https://www.figma.com/design/fGYgGacZFTItWI8VX0PyBf/Untitled?t=6emmmBwEY3oaD0i6-0",
-    cta: "Learn more",
-    imageUrl: "/accumitt.jpeg",
-  },
-  {
-    name: "Restore Health",
-    description:
-      "A desktop application for comprehensive patient data management, including patient history and more.",
-    redirectUrl:
-      "https://www.figma.com/design/USgPAameY3uPyQhce7jU8d/Untitled?t=6emmmBwEY3oaD0i6-0",
-    cta: "Learn more",
-    imageUrl: "/restoreHealth.jpeg",
-  },
-  {
-    name: "Trademarkia Pro",
-    description: "Supports 100+ languages and counting.",
-    redirectUrl:
-      "https://www.figma.com/design/P60X9mhllmVBG2S4RGJT45/trademarkiaPro?t=6emmmBwEY3oaD0i6-0",
-    cta: "Learn more",
-    imageUrl: "/trademarkia.jpeg",
-  },
-  {
-    name: "Ticketing Arc",
-    description: "Use the calendar to filter your files by date.",
-    redirectUrl:
-      "https://www.figma.com/design/YNEOxEWflBIz28f74yJuRn/Untitled?node-id=0-1&p=f&t=6emmmBwEY3oaD0i6-0",
-    cta: "Learn more",
-    imageUrl: "/ticketingArc.jpeg",
-  },
-];
+import ProjectCard from "@/components/ProjectCard";
+import React, { useEffect, useState } from "react";
+
+interface UiUx {
+  title: string;
+  description: string;
+  thumbnail: string;
+  link: string;
+}
 
 export function UiUxDesignCard() {
+  const [uiuxData, setUiUxData] = useState<UiUx[]>([]);
+
+  useEffect(() => {
+    const fetchUiUxData = async () => {
+      try {
+        const response = await fetch("/api/uiuxdesign");
+        if (response.ok) {
+          const data: UiUx[] = await response.json();
+          setUiUxData(data);
+          console.log(data);
+        } else {
+          console.error("Failed to fetch project data");
+        }
+      } catch (error) {
+        console.error("Error fetching project data:", error);
+      }
+    };
+
+    fetchUiUxData();
+  }, []);
   return (
     <div className="max-w-6xl my-5 flex justify-center flex-wrap gap-5">
-      {designs.map((design) => (
-        <ProjectCard key={design.name} {...design} buttonLabel="View Designs" />
+      {uiuxData.map((design, index) => (
+        <ProjectCard
+          key={index}
+          name={design.title}
+          description={design.description}
+          imageUrl={design.thumbnail}
+          redirectUrl={design.link}
+          buttonLabel="View Designs"
+        />
       ))}
     </div>
   );
