@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -6,72 +7,83 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Skeleton } from "@/components/ui/skeleton";
 import GenericPieChart from "./GenericPieChart.component";
 import { PieChartDataItem, PieChartConfig } from "./GenericPieChart.component";
 
-const programmingLanguageDesktopData: PieChartDataItem[] = [
-  { key: "javascript", value: 85, fill: "var(--color-pink)" },
-  { key: "python", value: 80, fill: "var(--color-blue)" },
-  { key: "java", value: 90, fill: "var(--color-purple)" },
-];
-const programmingLanguageChartConfig: PieChartConfig = {
-  javascript: { label: "Javascript", color: "#ff6384" },
-  python: { label: "Python", color: "#36a2eb" },
-  java: { label: "Java", color: "#cc65fe" },
-};
-
-const webDevDesktopData: PieChartDataItem[] = [
-  { key: "html", value: 85, fill: "var(--color-pink)" },
-  { key: "css", value: 80, fill: "var(--color-blue)" },
-  { key: "reactjs", value: 90, fill: "var(--color-purple)" },
-  { key: "nextjs", value: 173, fill: "var(--color-orange)" },
-  { key: "nodejs", value: 209, fill: "var(--color-green)" },
-];
-const webDevChartConfig: PieChartConfig = {
-  html: {
-    label: "HTML",
-    color: "#ff6384",
-  },
-  css: {
-    label: "CSS",
-    color: "#36a2eb",
-  },
-  reactjs: {
-    label: "React.js",
-    color: "#cc65fe",
-  },
-  nextjs: {
-    label: "Next.js",
-    color: "#e88c30",
-  },
-  nodejs: {
-    label: "Node.js",
-    color: "#2eb88a",
-  },
-};
-
-const designDesktopData: PieChartDataItem[] = [
-  { key: "adobexd", value: 85, fill: "var(--color-pink)" },
-  { key: "figma", value: 80, fill: "var(--color-blue)" },
-  { key: "qtdesigner", value: 90, fill: "var(--color-purple)" },
-];
-const designChartConfig: PieChartConfig = {
-  adobexd: {
-    label: "Adobe XD",
-    color: "#ff6384",
-  },
-  figma: {
-    label: "Figma",
-    color: "#36a2eb",
-  },
-  qtdesigner: {
-    label: "QT Designer",
-    color: "#cc65fe",
-  },
-};
+interface SkillCategory {
+  category: string;
+  displayName: string;
+  skills: PieChartDataItem[];
+  config: PieChartConfig;
+}
 
 export default function SkillsModal() {
+  const [skills, setSkills] = useState<SkillCategory[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchSkills = async () => {
+      try {
+        const response = await fetch('/api/skills');
+        if (!response.ok) {
+          throw new Error('Failed to fetch skills');
+        }
+        const data = await response.json();
+        setSkills(data);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'An error occurred');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchSkills();
+  }, []);
+
+  const renderContent = () => {
+    if (loading) {
+      return (
+        <div className="grid gap-5 mt-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="flex flex-col space-y-3">
+              <Skeleton className="h-[300px] w-full rounded-xl" />
+              <Skeleton className="h-4 w-[250px]" />
+            </div>
+          ))}
+        </div>
+      );
+    }
+
+    if (error) {
+      return (
+        <Alert variant="destructive">
+          <AlertDescription>
+            {error}
+          </AlertDescription>
+        </Alert>
+      );
+    }
+
+    return (
+      <div
+        className="grid gap-5 mt-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+        style={{ alignItems: "stretch" }}
+      >
+        {skills.map((category) => (
+          <GenericPieChart
+            key={category.category}
+            data={category.skills}
+            config={category.config}
+            title={category.displayName}
+          />
+        ))}
+      </div>
+    );
+  };
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -84,29 +96,8 @@ export default function SkillsModal() {
             See my fluency in different skills.
           </DialogDescription>
         </DialogHeader>
-        <div
-          className="grid gap-5 mt-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
-          style={{ alignItems: "stretch" }}
-        >
-          <GenericPieChart
-            data={programmingLanguageDesktopData}
-            config={programmingLanguageChartConfig}
-            title="Programming Languages"
-          />
-          <GenericPieChart
-            data={webDevDesktopData}
-            config={webDevChartConfig}
-            title="Web Development"
-          />
-          <GenericPieChart
-            data={designDesktopData}
-            config={designChartConfig}
-            title="UI/UX Designing Skills"
-          />
-        </div>
+        {renderContent()}
       </DialogContent>
     </Dialog>
   );
 }
-
-
