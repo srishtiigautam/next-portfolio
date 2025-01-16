@@ -6,7 +6,7 @@ import Counter from "../components/Counter.component";
 import Image from "next/image"; // Import Image from next/image
 
 interface AboutData {
-  photo?: string;
+  photo: string;
   description: string;
   bio: string;
   projectsCount: number;
@@ -60,8 +60,9 @@ const AboutMe: React.FC = () => {
         {/* image at top for small screens and at side or bottom for bigger screens */}
         <div className="flex custom-lg:hidden justify-end items-center">
           <Image
-            className="object-cover object-center rounded-md"
+            className="object-cover object-center rounded-md aspect-square"
             src={aboutData?.photo || imageUrl} // Use API image if available, else fallback
+            // src="https://res.cloudinary.com/dzu1gaoqo/image/upload/v1737035871/thumbnails/i6siooh7avpxa1yx7vn7.jpg"
             alt="Profile"
             width={500} // Set width
             height={500} // Set height
@@ -134,9 +135,10 @@ const AboutMe: React.FC = () => {
         {/* right div -> contains image */}
         <div className="hidden custom-lg:flex justify-end items-center">
           <Image
-            className="object-cover object-center rounded-md"
-            src={aboutData?.photo || imageUrl} // Use API image if available, else fallback
-            alt="Profile"
+            className="object-cover object-center rounded-md aspect-square"
+            src={aboutData?.photo || "https://res.cloudinary.com/dzu1gaoqo/image/upload/v1737035871/thumbnails/i6siooh7avpxa1yx7vn7.jpg"} // Use API image if available, else fallback
+            // src="https://res.cloudinary.com/dzu1gaoqo/image/upload/v1737035871/thumbnails/i6siooh7avpxa1yx7vn7.jpg"
+            alt="Profile Photo"
             width={500} // Set width
             height={500} // Set height
           />
