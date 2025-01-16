@@ -8,7 +8,7 @@ const UiUxHero: React.FC = () => {
       {/* Background Video */}
       <video
         className="absolute inset-0 w-full h-full object-cover z-0"
-        src="/bgVideo.mp4"
+        src="https://res.cloudinary.com/dzu1gaoqo/video/upload/f_auto:video,q_auto/eqnburrpskthjgsdplbr"
         autoPlay
         loop
         muted
