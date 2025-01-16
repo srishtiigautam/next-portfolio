@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import dbConnect from "@/utils/dbConnect.util";
-import Skill, { SkillCategoryData } from "@/models/skill.model";
+import { SkillCategoryData } from "@/models/skill.model";
 import SkillCategoryModel from "@/models/skill.model";
 
 // GET: Fetch all skills
@@ -11,7 +11,7 @@ export async function GET() {
     return NextResponse.json(skills);
   } catch (error) {
     return NextResponse.json(
-      { error: "Failed to fetch skills" },
+      { error: `Failed to fetch skills ${error}` },
       { status: 500 }
     );
   }
@@ -27,7 +27,7 @@ export async function POST(request: Request) {
     return NextResponse.json(newSkillCategory, { status: 201 });
   } catch (error) {
     return NextResponse.json(
-      { error: "Failed to create skill category" },
+      { error: `Failed to create skill category ${error}` },
       { status: 500 }
     );
   }
