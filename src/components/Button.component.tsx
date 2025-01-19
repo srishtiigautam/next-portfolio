@@ -1,13 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { ReactNode } from "react";
 
 interface ButtonProps {
-  label: string;
+  label?: string;
   className?: string;
   redirectUrl?: string; // Optional URL for redirection
   onClick?: () => void; // Optional onClick handler for custom functionality
   targetId?: string; // Optional ID for scrolling to an element
+  children?: ReactNode
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -16,6 +17,7 @@ const Button: React.FC<ButtonProps> = ({
   redirectUrl,
   onClick,
   targetId,
+  children,
 }) => {
   const handleClick = () => {
     if (onClick) {
@@ -37,7 +39,7 @@ const Button: React.FC<ButtonProps> = ({
       className={`py-2 px-4 rounded-md ${className}`}
       onClick={handleClick}
     >
-      {label}
+      {children ? children : label}
     </button>
   );
 };
