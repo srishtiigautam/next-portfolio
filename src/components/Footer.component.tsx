@@ -1,12 +1,9 @@
-"use client";
-import React, { useState } from "react";
-import Button from "./Button.component";
+import React from "react";
 import FooterItem from "./FooterItem.component";
 import FlickeringGrid from "@/components/ui/flickering-grid";
+import SocialMediaLinks from "./SocialMediaLinks.component";
 
 const Footer: React.FC = () => {
-  const [email, setEmail] = useState<string>("");
-
   return (
     <footer className="flex flex-col py-6 pb-2 ">
       {/* Top Section */}
@@ -44,23 +41,10 @@ const Footer: React.FC = () => {
           />
         </div>
 
-        {/* Subscription */}
-        <div className="flex flex-col w-full md:w-auto max-w-md">
+        {/* Social Media */}
+        <div className="flex flex-col gap-5 md:w-auto max-w-md">
           <h4 className="text-xl font-semibold">Stay Updated</h4>
-          <p className="text-balance text-md mt-2">
-            Subscribe to receive the latest updates on my projects and design
-            insights.
-          </p>
-          <div className="mt-4 flex flex-col sm:flex-row items-center gap-2">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Your email address"
-              className="w-full sm:w-auto px-4 py-2 rounded-md text-gray-700 focus:outline-none border border-pink-400 focus:border-pink-600 focus:ring focus:ring-pink-600 focus:outline-pink-600"
-            />
-            <Button label="Subscribe" />
-          </div>
+          <SocialMediaLinks />
         </div>
       </div>
 
