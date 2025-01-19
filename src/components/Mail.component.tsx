@@ -15,7 +15,7 @@ const Mail = () => {
     window.open(mailTo, "_blank");
   };
   return (
-    <Button onClick={sendMail} className="bg-none px-0 py-0 m-0">
+    <Button onClick={sendMail} className="bg-none !px-0 !py-0 m-0">
       <IoMdMail size={35} className="hover:text-pink-600" />
     </Button>
   );
