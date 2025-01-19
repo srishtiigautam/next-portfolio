@@ -9,7 +9,7 @@ const UiUxDesign: React.FC = () => {
       {/* Hero Section */}
       <UiUxHero />
 
-      <div className="relative flex flex-col justify-center items-center gap-5">
+      <div id="designs" className="relative flex flex-col justify-center items-center gap-5">
         <RetroGrid angle={30} cellSize={60} />
         {/* Benefits Section */}
         <div className="text-center my-10">
