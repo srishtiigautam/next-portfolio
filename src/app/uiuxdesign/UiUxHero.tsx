@@ -1,7 +1,6 @@
 import React from "react";
 import Button from "@/components/Button.component";
 
-// Since there are no props for this component, no need to define prop types
 const UiUxHero: React.FC = () => {
   return (
     <div className="relative flex justify-center items-center w-screen h-screen">
@@ -32,10 +31,7 @@ const UiUxHero: React.FC = () => {
         <div className="flex justify-center gap-5">
           <Button
             label="Explore Designs"
-            className="border-2 border-white hover:bg-white hover:text-black"
-          />
-          <Button
-            label="Contact Me"
+            targetId="designs"
             className="border-2 border-white hover:bg-white hover:text-black"
           />
         </div>
