@@ -5,7 +5,7 @@ const SocialMediaLinks = () => {
     <div className="flex flex-col">
       <div className="flex justify-between">
         <a
-          href="https://www.linkedin.com/in/srishtigautam"
+          href="https://www.linkedin.com/in/-srishtigautam"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-pink-600"
@@ -21,7 +21,7 @@ const SocialMediaLinks = () => {
           <FaGithubSquare size={30} />
         </a>
         <a
-          href="https://twitter.com/your-twitter-profile"
+          href="https://x.com/gautam_sri50255"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-pink-600"
